@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -115,13 +115,17 @@
 <div class="login-wrapper">
     <h2>Login</h2>
     <form method="post" action="/member/login" id="login-form">
-        <input type="text" name="userName" placeholder="Email">
-        <input type="password" name="userPassword" placeholder="Password">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
         <label for="remember-check">
             <input type="checkbox" id="remember-check">아이디 저장하기
         </label>
         <input type="submit" value="Login">
     </form>
+<!--    로그인수정중-->
+    <div>
+        <p th:text="${errorMessage}"></p>
+    </div>
 </div>
 </body>
 </html>

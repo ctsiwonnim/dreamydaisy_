@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Mypage</title>
@@ -111,36 +111,19 @@
     <a href="/member/cart"><span class="ex">CART</span></a>
     <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
 </div>
-
 <div class="container">
     <div class="jumbotron">
-        <form method="post" action="/member/mypage">
-            <h3 style="text-align: center;">회원정보 상세</h3>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <div class="text-value" id="email">null</div>
-            </div>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <div class="text-value" id="name">null</div>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <div class="text-value" id="password">null</div>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone number:</label>
-                <div class="text-value" id="phone">null</div>
-            </div>
-        </form>
-        <form method="get" action="/member/mypagemodify">
-            <div class="btn-container">
-                <button type="submit" class="btn btn-primary form-control">수정하기</button>
-            </div>
-        </form>
+        <h3 style="text-align: center;" th:text="${item.name}">상품 이름</h3>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <div class="text-value" id="price" th:text="${item.price}">가격</div>
+        </div>
+        <div class="form-group">
+            <label for="itemscript">Description:</label>
+            <div class="text-value" id="itemscript" th:text="${item.itemscript}">설명</div>
+        </div>
     </div>
 </div>
-
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 </body>

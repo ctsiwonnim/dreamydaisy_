@@ -18,4 +18,14 @@ public class ItemService {
     public List<Item> findAll() {
         return mapper.findAll();
     }
+
+    @Transactional
+    public void save(Item item) {
+        mapper.save(item);
+    }
+
+    @Transactional(readOnly = true)
+    public Item findById(Long id) {
+        return mapper.findById(id).orElse(null);
+    }
 }

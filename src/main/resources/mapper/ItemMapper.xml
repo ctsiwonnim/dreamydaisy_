@@ -6,4 +6,15 @@
         select id, name, price
         from item;
     </select>
+
+    <insert id="save" parameterType="com.dreamdaisy.domain.Item">
+        INSERT INTO item (name, price, itemscript)
+        VALUES (#{name}, #{price}, #{itemscript});
+    </insert>
+
+    <select id="findById" parameterType="long" resultType="com.dreamdaisy.domain.Item">
+        SELECT id, name, price, itemscript
+        FROM item
+        WHERE id = #{id}
+    </select>
 </mapper>

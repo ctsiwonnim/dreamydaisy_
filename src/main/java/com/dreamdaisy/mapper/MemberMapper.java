@@ -2,6 +2,7 @@ package com.dreamdaisy.mapper;
 
 import com.dreamdaisy.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface MemberMapper {
 
     List<Member> findAll();
 
+    Member findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 }

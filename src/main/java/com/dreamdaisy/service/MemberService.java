@@ -3,7 +3,6 @@ package com.dreamdaisy.service;
 import com.dreamdaisy.domain.Member;
 import com.dreamdaisy.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,20 +14,27 @@ public class MemberService {
 
     private final MemberMapper memberMapper;
 
-
     @Transactional
     public void save(Member member) {
-
         memberMapper.save(member);
     }
 
+    @Transactional(readOnly = true)
     public Member findById(Long id) {
         return memberMapper.findById(id);
     }
 
+    @Transactional(readOnly = true)
     public List<Member> findAll() {
         return memberMapper.findAll();
     }
 
+    @Transactional(readOnly = true)
+    public Member findByEmailAndPassword(String email, String password) {
+        Member member = memberMapper.findByEmailAndPassword(email, password);
 
+        System.out.println("*******" + member.getEmail());
+
+        return member;
+    }
 }

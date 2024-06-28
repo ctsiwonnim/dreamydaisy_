@@ -1,4 +1,6 @@
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,97 +11,108 @@
 </head>
 <style>
     body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: Arial, sans-serif;
     }
-  .top-section {
-    width: 100%;
-    background-color: #F6A5B7;
-    text-align: right;
-    padding: 5px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-
-  .top-section a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    margin: 0 10px;
-  }
-  .ex{
-    height: 30px;
-    color: white;
-    margin-left:10px;
-    padding-right: 20px;
-    line-height: 30px;
-  }
-  .banner-section {
-    height: 280px;
-    background-image: url("https://static.wixstatic.com/media/31c96f_a07c4bbedde44d93998a4afa845fe3c8~mv2.jpg");
-    background-size: cover;
-    position: relative;
-  }
-  .search-box {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    background-color: #FFF8C1;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  #menu ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  #menu li {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  #menu li a {
-    text-decoration: none;
-    color: black;
-  }
-  .row {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-.col {
-    flex: 1;
-    margin: 10px;
-}
-@media (max-width: 1200px) {
-    .row-cols-xl-4 .col {
+    .top-section {
+      width: 100%;
+      background-color: #F6A5B7;
+      text-align: right;
+      padding: 5px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+    .top-section a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      margin: 0 10px;
+    }
+    .ex {
+      height: 30px;
+      color: white;
+      margin-left: 10px;
+      padding-right: 20px;
+      line-height: 30px;
+    }
+    .banner-section {
+      height: 280px;
+      background-image: url("https://static.wixstatic.com/media/31c96f_a07c4bbedde44d93998a4afa845fe3c8~mv2.jpg");
+      background-size: cover;
+      position: relative;
+    }
+    .search-box {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      background-color: #FFF8C1;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    #menu ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    #menu li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    #menu li a {
+      text-decoration: none;
+      color: black;
+    }
+    .row {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+    .col {
+      flex: 1;
+      margin: 10px;
+    }
+    @media (max-width: 1200px) {
+      .row-cols-xl-4 .col {
         flex: 0 0 25%;
+      }
     }
-}
-@media (max-width: 992px) {
-    .row-cols-md-3 .col {
+    @media (max-width: 992px) {
+      .row-cols-md-3 .col {
         flex: 0 0 33.3333%;
+      }
     }
-}
-@media (max-width: 768px) {
-    .row-cols-2 .col {
+    @media (max-width: 768px) {
+      .row-cols-2 .col {
         flex: 0 0 50%;
+      }
     }
-}
-.container-fluid {
-display: flex;
-flex-direction: column;
-align-items: center;
-}
+    .container-fluid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .spacer {
+      margin-top: 40px;
+    }
 </style>
 <body>
+<!--<div class="top-section">-->
+<!--    <span class="ex" th:if="${session.member == null}"><a href="/member/login">LOGIN</a></span>-->
+<!--    <span class="ex" th:if="${session.member != null}">Hello, <span th:text="${session.member.name}"></span></span>-->
+<!--    <a href = "/member/join"><span class="ex">JOIN</span></a>-->
+<!--    <a href = "/member/mypage"><span class="ex">MYPAGE</span></a>-->
+<!--    <a href = "/member/cart"><span class="ex">CART</span></a>-->
+<!--    <a href = "/member/additem"><span class="ex">ADD ITEM</span></a>-->
+<!--</div>-->
 <div class="top-section">
     <span class="ex" th:if="${session.member == null}"><a href="/member/login">LOGIN</a></span>
     <span class="ex" th:if="${session.member != null}">Hello, <span th:text="${session.member.name}"></span></span>
-    <a href = "/member/join"><span class="ex">JOIN</span></a>
-    <a href = "/member/mypage"><span class="ex">MYPAGE</span></a>
-    <a href = "/member/cart"><span class="ex">CART</span></a>
-    <a href = "/member/additem"><span class="ex">ADD ITEM</span></a>
+    <a href="/member/join"><span class="ex">JOIN</span></a>
+    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/member/cart"><span class="ex">CART</span></a>
+    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
 </div>
 
 <div class="banner-section">
@@ -117,7 +130,7 @@ align-items: center;
             <div class="col mb-5" th:each="item : ${items}">
                 <div class="card">
                     <!-- Product image-->
-                    <img class="card-img-top" src="/img/P20200410_175958652_E35FC255-2163-47C8-8C91-36A3D076610E.JPG" alt="..." width="350px" height="200px" />
+                    <img class="card-img-top" src="/img/P20200410_175958652_E35FC255-2163-47C8-8C91-36A3D076610E.JPG" alt="..." width="350px" height="300px" />
                     <!-- Product details-->
                     <div class="card-body p-4">
                         <div class="text-center">
@@ -129,22 +142,14 @@ align-items: center;
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+<!--                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="@{/item/details(id=${item.id})}">Product details</a></div>-->
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="@{/items/{id}(id=${item.id})}">Product details</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-</n>
 <div class="mb-5 container-fluid">
     <hr>
     <p> ⓒ 2024 Shopping Mall Example WebSite </p>
