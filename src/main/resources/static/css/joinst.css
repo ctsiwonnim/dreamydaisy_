@@ -1,38 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>회원가입</title>
-</head>
-<style>
-    * {
+* {
          box-sizing: border-box;
          font-style: normal;
          font-family: 'Roboto', sans-serif;
-     }
+}
 
-     body {
+body {
          display: flex;
          flex-direction: row;
          justify-content: center;
          font-size: 14px;
          font-family: 'Roboto', sans-serif;
-     }
-    .top-section {
-            width: 100%;
-            background-color: #F6A5B7;
-            text-align: right;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
+         }
 
-        .top-section a {
-            text-decoration: none;
-            color: white;
-            font-size: 16px;
-            margin: 0 10px;
-        }
      .container {
          display: flex;
          flex-direction: column;
@@ -159,52 +138,3 @@
          font-weight : bold;
          background-color: #CBE8B2;
      }
-
-</style>
-<body>
-<div class="top-section">
-    <a href="/"><span class="ex">HOME</span></a>
-    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/member/cart"><span class="ex">CART</span></a>
-    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
-</div>
-<form method="post" action="/member/join" id="join-form">
-    <div class="container">
-        <div class="member-container">
-            <div class="header">
-                <div>회원 가입을 위해</div>
-                <div>정보를 입력해주세요</div>
-            </div>
-            <div class="user-info">
-                <label for="email">* EMAIL</label>
-                <input type="email" id="email" name="email" required />
-
-                <label for="name">* NAME</label>
-                <input type="text" id="name" name="name" required />
-
-                <label for="password">* PASSWORD</label>
-                <input type="password" id="password" name="password" required />
-
-                <label for="confirm-password">* CONFIRM-PASSWORD</label>
-                <input type="password" id="confirm-password" name="confirm-password" required />
-
-                <label for="phone">* PHONE NUMBER</label>
-                <input type="text" id="phone" name="phone" required />
-            </div>
-
-            <div class="agree-check">
-                <input type="checkbox" id="agree" name="agree" />
-                <label for="agree">이용약관 개인정보 수집 및 이용, 마케팅 활용 선택에 모두 동의합니다.</label>
-            </div>
-            <div class="btn">
-                <button>JOIN</button>
-            </div>
-        </div>
-    </div>
-    <div class="mb-5 container-fluid">
-        <hr>
-        <p> ⓒ 2024 Shopping Mall Example WebSite </p>
-    </div>
-</form>
-</body>
-</html>

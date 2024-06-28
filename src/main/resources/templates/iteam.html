@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mypage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-style: normal;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #F6A5B7;
+            text-align: right;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .top-section a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 70px;
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .jumbotron {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            flex: 0 0 120px;
+            text-align: right;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .form-group .text-value {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #cfcfcf;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: #f8f8f8;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: #F6A5B7;
+            border: none;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .btn-primary:hover {
+            background-color: #e595a5;
+        }
+    </style>
+</head>
+<body>
+<div class="top-section">
+    <a href="/"><span class="ex">HOME</span></a>
+    <a href="/member/login"><span class="ex">LOGIN</span></a>
+    <a href="/member/join"><span class="ex">JOIN</span></a>
+    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/member/cart"><span class="ex">CART</span></a>
+    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <form method="post" action="/member/mypage">
+            <h3 style="text-align: center;">회원정보 상세</h3>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <div class="text-value" id="email">null</div>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <div class="text-value" id="name">null</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <div class="text-value" id="password">null</div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone number:</label>
+                <div class="text-value" id="phone">null</div>
+            </div>
+        </form>
+        <form method="get" action="/member/mypagemodify">
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary form-control">수정하기</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+</body>
+</html>

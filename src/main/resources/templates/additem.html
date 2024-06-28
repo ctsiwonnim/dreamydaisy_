@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Myshop</title>
+    <script src="/static/js/additem.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-style: normal;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #F6A5B7;
+            text-align: right;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .top-section a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        #container {
+            width: 100%;
+            margin: auto;
+            padding: 30px;
+            margin-top: 70px; /* Adjusted for fixed banner and reduced margin */
+            background-color: whitesmoke;
+            border: 1px solid #cfcfcf;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #container th, #container td {
+            padding: 10px; /* Reduced padding */
+        }
+
+        #container th {
+            text-align: left;
+            width: 30%;
+        }
+
+        #container td {
+            width: 70%;
+        }
+
+        #container input, #container textarea {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #cfcfcf;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #productcontents {
+            height: 150px; /* Adjusted height for textarea */
+        }
+
+        #submitButn {
+            width: 100%;
+            padding: 10px;
+            background-color: #F6A5B7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #submitButn:hover {
+            background-color: #e595a5;
+        }
+    </style>
+</head>
+<body>
+<div class="top-section">
+    <a href="/"><span class="ex">HOME</span></a>
+    <a href="/member/login"><span class="ex">LOGIN</span></a>
+    <a href="/member/join"><span class="ex">JOIN</span></a>
+    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/member/cart"><span class="ex">CART</span></a>
+</div>
+
+<form method="post" action="/member/additem" id="additem-form">
+    <form id="formsub" th:action="@{/}" method="post" enctype="multipart/form-data">
+        <table id="container">
+            <tr>
+                <td id="result" colspan="2"></td>
+            </tr>
+            <tr>
+                <th><label for="productname">상품명</label></th>
+                <td><input type="text" name="productname" id="productname" placeholder="상품명 입력해주세요"></td>
+            </tr>
+            <tr>
+                <th><label for="productprice">가격</label></th>
+                <td><input type="text" name="productprice" id="productprice" placeholder="가격을 적어주세요"></td>
+            </tr>
+            <tr>
+                <th><label for="productcontents">상품 정보</label></th>
+                <td><textarea name="productcontents" id="productcontents" cols="50" rows="20"></textarea></td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="button" id="submitButn" value="등록하기">
+                </th>
+            </tr>
+        </table>
+    </form>
+</form>
+
+</body>
+</html>
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    <div class="container px-4 px-lg-5">-->
+<!--        <a class="navbar-brand" th:href="@{/}">My shop</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">-->
+<!--                <li class="nav-item"><a class="nav-link active" aria-current="page" th:href="@{/}">Home</a></li>-->
+<!--                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>-->
+<!--                <li class="nav-item dropdown">-->
+<!--                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>-->
+<!--                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                        <li><a class="dropdown-item" href="#!">모든 상품</a></li>-->
+<!--                        <li><hr class="dropdown-divider"/></li>-->
+<!--                        <li><a class="dropdown-item" href="#!">인기 상품</a></li>-->
+<!--                        <li><a class="dropdown-item" href="#!">새 상품</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <div th:if="${loginUserid != null}">-->
+<!--                <form class="d-flex">-->
+<!--                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">-->
+<!--                        <li class="nav-item"><a th:href="@{/user/myInfo}" class="nav-link">내정보</a></li>-->
+<!--                        <li class="nav-item"><a th:href="@{/product/addproduct}" class="nav-link">상품 등록</a></li>-->
+<!--                        <li class="nav-item"><a th:href="@{/user/logout}" class="nav-link">로그아웃</a></li>-->
+<!--                    </ul>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--            <div th:if="${loginUserid == null}">-->
+<!--                <script>-->
+<!--                    alert("로그인 후 이용해주세요");-->
+<!--                    history.go(-1);-->
+<!--                </script>-->
+<!--            </div>-->
+<!--            <div th:if="${f != null}">-->
+<!--                <script>-->
+<!--                    alert("상품 등록 실패");-->
+<!--                    return false;-->
+<!--                </script>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!-- nav 끝 -->

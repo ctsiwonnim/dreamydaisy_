@@ -14,7 +14,4 @@ public interface MemberMapper {
 
     List<Member> findAll();
 
-    void deleteById(Long id);
-
-    void Update(Member member);
 }

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mypage modify</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-style: normal;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+
+        .top-section {
+            width: 100%;
+            background-color: #F6A5B7;
+            text-align: right;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .top-section a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 70px; /* Adjusted for fixed banner */
+            padding: 30px;
+            background-color: white;
+            border: 1px solid #cfcfcf;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%; /* Increased width */
+            max-width: 800px; /* Increased max-width */
+        }
+
+        .jumbotron {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            flex: 0 0 120px;
+            text-align: right;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #cfcfcf;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: #F6A5B7;
+            border: none;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full width of the parent container */
+            max-width: 200px; /* Limiting the width of the button */
+        }
+
+        .btn-primary:hover {
+            background-color: #e595a5;
+        }
+    </style>
+</head>
+<body>
+<div class="top-section">
+    <a href="/"><span class="ex">HOME</span></a>
+    <a href="/member/login"><span class="ex">LOGIN</span></a>
+    <a href="/member/join"><span class="ex">JOIN</span></a>
+    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/member/cart"><span class="ex">CART</span></a>
+    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <form method="post" action="/member/mypagemodify">
+            <h3 style="text-align: center;">회원정보 수정</h3>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" maxlength="50" value="<!-- 서버에서 가져온 이메일 -->">
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" maxlength="20" value="<!-- 서버에서 가져온 이름 -->">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" maxlength="20" value="<!-- 서버에서 가져온 비밀번호 -->">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone number:</label>
+                <input type="text" id="phone" name="phone" maxlength="20" value="<!-- 서버에서 가져온 전화번호 -->" readonly>
+            </div>
+            <div class="btn-container">
+                <input type="submit" class="btn btn-primary form-control" value="수정완료">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Mypage</title>-->
+<!--    <link rel="stylesheet" href="/css/bootstrap.css">-->
+<!--    <style>-->
+<!--        .top-section {-->
+<!--            width: 100%;-->
+<!--            background-color: #F6A5B7;-->
+<!--            text-align: right;-->
+<!--            padding: 10px;-->
+<!--            position: fixed;-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--            z-index: 1000;-->
+<!--        }-->
+
+<!--        .top-section a {-->
+<!--            text-decoration: none;-->
+<!--            color: white;-->
+<!--            font-size: 16px;-->
+<!--            margin: 0 10px;-->
+<!--        }-->
+
+<!--        .container {-->
+<!--            margin-top: 70px; /* Adjusted for fixed banner */-->
+<!--        }-->
+
+<!--        .jumbotron {-->
+<!--            padding-top: 20px;-->
+<!--        }-->
+
+<!--        .form-group {-->
+<!--            margin-bottom: 15px;-->
+<!--        }-->
+
+<!--        .btn-group .btn {-->
+<!--            width: 100px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="top-section">-->
+<!--    <a href="/"><span class="ex">HOME</span></a>-->
+<!--    <a href="/member/login"><span class="ex">LOGIN</span></a>-->
+<!--    <a href="/member/join"><span class="ex">JOIN</span></a>-->
+<!--    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>-->
+<!--    <a href="/member/cart"><span class="ex">CART</span></a>-->
+<!--    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>-->
+<!--</div>-->
+
+<!--<div class="container">-->
+<!--    <div class="col-lg-4"></div>-->
+<!--    <div class="col-lg-4">-->
+<!--        <div class="jumbotron">-->
+<!--            <form method="post" action="/member/mypage">-->
+<!--                <h3 style="text-align: center;">회원정보 수정</h3>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control" name="id" maxlength="20" th:value="${member.id}" readonly>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="email" class="form-control" name="email" maxlength="50" th:text="${member.email}">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control" name="name" maxlength="20" th:text="${member.name}">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="password" class="form-control" name="password" maxlength="20" th:text="${member.password}">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" class="form-control" name="phone" maxlength="20" th:text="${member.phoen}" readonly>-->
+<!--                </div>-->
+<!--                <input type="submit" class="btn btn-primary form-control" value="수정완료">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-lg-4"></div>-->
+<!--</div>-->
+
+<!--<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+<!--<script src="/js/bootstrap.js"></script>-->
+<!--</body>-->
+<!--</html>-->
