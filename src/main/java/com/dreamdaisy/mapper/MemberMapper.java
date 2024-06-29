@@ -18,4 +18,6 @@ public interface MemberMapper {
     Member findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 
     void update(Member member);
+
+    void delete(Long id);
 }

@@ -29,4 +29,8 @@
         email = #{email};
     </update>
 
+    <delete id="delete">
+        delete from member where id = #{id}
+    </delete>
+
 </mapper>

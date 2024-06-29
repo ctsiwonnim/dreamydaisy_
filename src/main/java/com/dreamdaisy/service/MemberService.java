@@ -41,4 +41,9 @@ public class MemberService {
         memberMapper.update(member);
     }
 
+    @Transactional
+    public void delete(Long id) {
+        memberMapper.delete(id);
+    }
+
 }

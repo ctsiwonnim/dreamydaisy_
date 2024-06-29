@@ -134,6 +134,22 @@ public class MainController {
         return "redirect:/";
     }
 
+    @GetMapping("/member/mypagedel")
+    public String mypageDeleteForm(Model model, HttpSession session) {
+        Member member = (Member) session.getAttribute("member");
+        if (member != null) {
+            model.addAttribute("member", member);
+        }
+        return "mypagedel";
+    }
+
+    @PostMapping("/member/delete")
+    public String deleteMember(@RequestParam Long id, HttpSession session) {
+        memberService.delete(id);
+        session.invalidate();
+        return "redirect:/";
+    }
+
     @GetMapping("/member/logout")
     public String logoutForm(HttpSession session) {
         session.invalidate();
