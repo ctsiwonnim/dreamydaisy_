@@ -44,7 +44,7 @@ public class MainController {
     }
 
     @GetMapping("/member/login")
-    public String loginFrom() {
+    public String loginForm() {
         return "login";
     }
 
@@ -68,12 +68,12 @@ public class MainController {
     }
 
     @GetMapping("/member/cart")
-    public String cartFrom() {
+    public String cartForm() {
         return "cart";
     }
 
     @GetMapping("/member/additem")
-    public String additemFrom() {
+    public String additemForm() {
         return "additem";
     }
 
@@ -90,23 +90,49 @@ public class MainController {
     }
 
     @GetMapping("/member/mypage")
-    public String mypageFrom(Model model) {
+    public String mypageForm(Model model, HttpSession session) {
         // Member 정보를 나중에 가져올 예정이므로 null로 설정
-        model.addAttribute("member", null);
+//        model.addAttribute("member", null);
+//        return "mypage";
+        Member member = (Member) session.getAttribute("member");
+        if (member != null) {
+            member = memberService.findById(member.getId());
+            model.addAttribute("member", member);
+        }
         return "mypage";
     }
 
     @GetMapping("/member/mypagemodify")
-    public String mypageModifyForm() {
+    public String mypageModifyForm(Model model, HttpSession session) {
+        Member member = (Member) session.getAttribute("member");
+        if (member != null) {
+            member = memberService.findById(member.getId());
+            model.addAttribute("member", member);
+        }
         return "mypagemodify";
     }
 
-//    @GetMapping("/item/details")
-//    public String getItemDetails(@RequestParam Long id, Model model) {
-//        Item item = itemService.findById(id);
-//        model.addAttribute("item", item);
-//        return "item";
-//    }
+    @PostMapping("/member/mypagemodify")
+    public String mypageModify(
+            @RequestParam Long id,
+            @RequestParam String email,
+            @RequestParam String name,
+            @RequestParam String password,
+            @RequestParam String phone,
+            HttpSession session) {
+
+        Member member = Member.builder()
+                .id(id)
+                .email(email)
+                .name(name)
+                .password(password)
+                .phone(phone)
+                .build();
+
+        memberService.update(member);
+        session.setAttribute("member", member);
+        return "redirect:/";
+    }
 
     @GetMapping("/member/logout")
     public String logoutForm(HttpSession session) {

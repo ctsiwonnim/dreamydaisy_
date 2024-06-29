@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mypage modify</title>
+    <link rel="stylesheet" href="/css/mypagemodifyst.css">
+</head>
+<body>
+<div class="top-section">
+    <a href="/"><span class="ex">HOME</span></a>
+    <span class="ex" th:if="${session.member != null}">
+        <a href="/member/logout"><span class="ex">LOGOUT</span></a>
+    </span>
+    <a href="/member/join"><span class="ex">JOIN</span></a>
+    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/member/cart"><span class="ex">CART</span></a>
+    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <form method="post" action="/member/mypagemodify" onsubmit="return validateForm()">
+            <h3 style="text-align: center;">회원정보 수정</h3>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" maxlength="50" th:value="${member.email}" placeholder="이메일을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" maxlength="20" th:value="${member.name}" placeholder="이름을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" maxlength="20" placeholder="비밀번호를 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone number:</label>
+                <input type="text" id="phone" name="phone" maxlength="30" th:value="${member.phone}" placeholder="전화번호를 입력하세요">
+            </div>
+            <div class="btn-container">
+                <input type="submit" class="btn btn-primary form-control" value="수정완료">
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+</body>
+</html>

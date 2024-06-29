@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/itemmodifyst.css">
+</head>
+<body>
+<div class="top-section">
+    <a href="/"><span class="ex">HOME</span></a>
+    <span class="ex" th:if="${session.member != null}"></span>
+        <a href="/member/logout"><span class="ex">LOGOUT</span></a>
+    </span>
+    <a href="/member/join"><span class="ex">JOIN</span></a>
+    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/member/cart"><span class="ex">CART</span></a>
+    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+</div>
+
+<div class="container">
+    <div class="jumbotron">
+        <form method="post" action="/items/itemmodify" onsubmit="return validateForm()">
+            <h3 style="text-align: center;" th:text="${item.name}">상품 이름</h3>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="text" id="price" name="price" maxlength="50" th:value="${item.price}" placeholder="가격을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="itemscript">Description:</label>
+                <input type="text" id="itemscript" name="itemscript" maxlength="20" th:value="${item.itemscript}" placeholder="설명을 입력하세요">
+            </div>
+            <div class="btn-container">
+                <input type="submit" class="btn btn-primary form-control" value="수정완료">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

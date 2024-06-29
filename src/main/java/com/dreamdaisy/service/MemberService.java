@@ -32,9 +32,13 @@ public class MemberService {
     @Transactional(readOnly = true)
     public Member findByEmailAndPassword(String email, String password) {
         Member member = memberMapper.findByEmailAndPassword(email, password);
-
         System.out.println("*******" + member.getEmail());
-
         return member;
     }
+
+    @Transactional
+    public void update(Member member) {
+        memberMapper.update(member);
+    }
+
 }

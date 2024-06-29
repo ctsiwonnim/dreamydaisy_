@@ -1,6 +1,7 @@
 package com.dreamdaisy.service;
 
 import com.dreamdaisy.domain.Item;
+import com.dreamdaisy.domain.Member;
 import com.dreamdaisy.mapper.ItemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,20 +13,25 @@ import java.util.List;
 @Service
 public class ItemService {
 
-    private final ItemMapper mapper;
+    private final ItemMapper itemMapper;
 
     @Transactional(readOnly = true)
     public List<Item> findAll() {
-        return mapper.findAll();
+        return itemMapper.findAll();
     }
 
     @Transactional
     public void save(Item item) {
-        mapper.save(item);
+        itemMapper.save(item);
     }
 
     @Transactional(readOnly = true)
     public Item findById(Long id) {
-        return mapper.findById(id).orElse(null);
+        return itemMapper.findById(id).orElse(null);
+    }
+
+    @Transactional
+    public void update(Item item) {
+        itemMapper.update(item);
     }
 }

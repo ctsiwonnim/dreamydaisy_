@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+    font-style: normal;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    margin: 0;
+}
+
+.top-section {
+    width: 100%;
+    background-color: #F6A5B7;
+    text-align: right;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.top-section a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+#container {
+    width: 100%;
+    margin: auto;
+    padding: 30px;
+    margin-top: 70px; /* Adjusted for fixed banner and reduced margin */
+    background-color: whitesmoke;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#container th, #container td {
+    padding: 10px; /* Reduced padding */
+}
+
+#container th {
+    text-align: left;
+    width: 30%;
+}
+
+#container td {
+    width: 70%;
+}
+
+#container input, #container textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#productcontents {
+    height: 150px; /* Adjusted height for textarea */
+}
+
+#submitButn {
+    width: 100%;
+    padding: 10px;
+    background-color: #F6A5B7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#submitButn:hover {
+    background-color: #e595a5;
+}

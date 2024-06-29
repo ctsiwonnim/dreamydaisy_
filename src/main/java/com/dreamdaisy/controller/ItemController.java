@@ -1,12 +1,15 @@
 package com.dreamdaisy.controller;
 
 import com.dreamdaisy.domain.Item;
+import com.dreamdaisy.domain.Member;
 import com.dreamdaisy.service.ItemService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
@@ -19,6 +22,32 @@ public class ItemController {
     public String getItemDetails(@PathVariable Long id, Model model) {
         Item item = itemService.findById(id);
         model.addAttribute("item", item);
-        return "iteam";
+        return "item";
+    }
+
+    @GetMapping("/items/itemmodify")
+    public String itemmodifyForm() {
+        return "itemmodify";
+    }
+
+    @PostMapping("/items/itemmodify")
+    public String mypageModify(
+            @RequestParam Long id,
+            @RequestParam int price,
+            @RequestParam String itemscript,
+            @RequestParam String name,
+            HttpSession session) {
+
+        Item item = Item.builder()
+                .id(id)
+                .name(name)
+                .price(price)
+                .itemscript(itemscript)
+                .build();
+
+        itemService.update(item);
+        session.setAttribute("item", item);
+        return "redirect:/";
+
     }
 }

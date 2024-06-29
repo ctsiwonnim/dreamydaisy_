@@ -16,4 +16,6 @@ public interface MemberMapper {
     List<Member> findAll();
 
     Member findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+
+    void update(Member member);
 }

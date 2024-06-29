@@ -13,4 +13,20 @@
         from member
         where email = #{email} and password = #{password};
     </select>
+
+    <select id="findById" resultType="com.dreamdaisy.domain.Member">
+        select id, email, name, password, phone
+        from member
+        where id = #{id};
+    </select>
+
+    <update id="update">
+        update member
+        set
+        name = #{name},
+        password = #{password},
+        phone = #{phone}
+        email = #{email};
+    </update>
+
 </mapper>

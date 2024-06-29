@@ -1,6 +1,6 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
+            margin: 0;
+            font-family: Arial, sans-serif;
 }
 
 * {
@@ -27,6 +27,7 @@ img {
     width: 80%;
     margin: auto;
     padding: 30px;
+    margin-top: 70px; /* Adjusted for fixed banner */
 }
 
 .cart ul {
@@ -155,4 +156,22 @@ td {
     background-color: #F6A5B7;
     color: white;
     border: none;
+}
+
+.top-section {
+    width: 100%;
+    background-color: #F6A5B7;
+    text-align: right;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.top-section a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin: 0 10px;
 }

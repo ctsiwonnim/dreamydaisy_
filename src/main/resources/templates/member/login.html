@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/loginst.css">
+</head>
+<body>
+<div class="top-section">
+    <a href="/"><span class="ex">HOME</span></a>
+    <a href="/member/join"><span class="ex">JOIN</span></a>
+    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/member/cart"><span class="ex">CART</span></a>
+    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+</div>
+<div class="login-wrapper">
+    <h2>Login</h2>
+    <form method="post" action="/member/login" id="login-form">
+        <input type="email" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <label for="remember-check">
+            <input type="checkbox" id="remember-check">아이디 저장하기
+        </label>
+        <input type="submit" value="Login">
+    </form>
+<!--    로그인수정중-->
+    <div>
+        <p th:text="${errorMessage}"></p>
+    </div>
+</div>
+</body>
+</html>

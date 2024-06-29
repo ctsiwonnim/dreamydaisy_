@@ -17,4 +17,13 @@
         FROM item
         WHERE id = #{id}
     </select>
+
+    <update id="update">
+        update item
+        set
+        name = #{name},
+        price = #{price},
+        itemscript = #{itemscript}
+    </update>
+
 </mapper>
