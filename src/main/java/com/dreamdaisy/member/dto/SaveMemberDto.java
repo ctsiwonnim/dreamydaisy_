@@ -1,4 +1,4 @@
-package com.dreamdaisy.service.dto;
+package com.dreamdaisy.member.dto;
 
 import lombok.Data;
 

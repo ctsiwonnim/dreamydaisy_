@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dreamdaisy.mapper.MemberMapper">
+<mapper namespace="com.dreamdaisy.member.mapper.MemberMapper">
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         insert into member (email, name, password, phone)
         values (#{email}, #{name}, #{password}, #{phone})
     </insert>
 
-    <select id="findByEmailAndPassword" resultType="com.dreamdaisy.domain.Member">
+    <select id="findByEmailAndPassword" resultType="com.dreamdaisy.member.domain.Member">
         select id, name, email, password, phone
         from member
         where email = #{email} and password = #{password};
     </select>
 
-    <select id="findById" resultType="com.dreamdaisy.domain.Member">
+    <select id="findById" resultType="com.dreamdaisy.member.domain.Member">
         select id, email, name, password, phone
         from member
         where id = #{id};

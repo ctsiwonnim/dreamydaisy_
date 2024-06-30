@@ -1,6 +1,6 @@
-package com.dreamdaisy.mapper;
+package com.dreamdaisy.member.mapper;
 
-import com.dreamdaisy.domain.Member;
+import com.dreamdaisy.member.domain.Member;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

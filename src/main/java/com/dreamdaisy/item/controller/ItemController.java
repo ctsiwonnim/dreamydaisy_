@@ -1,8 +1,7 @@
-package com.dreamdaisy.controller;
+package com.dreamdaisy.item.controller;
 
-import com.dreamdaisy.domain.Item;
-import com.dreamdaisy.domain.Member;
-import com.dreamdaisy.service.ItemService;
+import com.dreamdaisy.item.domain.Item;
+import com.dreamdaisy.item.service.ItemService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

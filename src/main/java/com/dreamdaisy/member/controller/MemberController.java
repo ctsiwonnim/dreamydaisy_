@@ -1,4 +1,4 @@
-package com.dreamdaisy.controller;
+package com.dreamdaisy.member.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

@@ -1,10 +1,8 @@
-package com.dreamdaisy.mapper;
+package com.dreamdaisy.item.mapper;
 
-import com.dreamdaisy.domain.Item;
-import com.dreamdaisy.domain.Member;
+import com.dreamdaisy.item.domain.Item;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 import java.util.Optional;

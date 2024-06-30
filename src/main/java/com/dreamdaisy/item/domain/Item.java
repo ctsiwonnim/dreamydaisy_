@@ -1,4 +1,4 @@
-package com.dreamdaisy.domain;
+package com.dreamdaisy.item.domain;
 
 import lombok.*;
 

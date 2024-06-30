@@ -73,6 +73,10 @@ body {
   margin-bottom: 20px;
 }
 
+.row-cols-2.row-cols-md-3.row-cols-lg-4 > .col:nth-child(4n+1) {
+  margin-left: 5%;
+}
+
 @media (max-width: 1200px) {
   .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
     flex: 0 0 32%;

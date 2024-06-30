@@ -1,8 +1,7 @@
-package com.dreamdaisy.service;
+package com.dreamdaisy.item.service;
 
-import com.dreamdaisy.domain.Item;
-import com.dreamdaisy.domain.Member;
-import com.dreamdaisy.mapper.ItemMapper;
+import com.dreamdaisy.item.domain.Item;
+import com.dreamdaisy.item.mapper.ItemMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

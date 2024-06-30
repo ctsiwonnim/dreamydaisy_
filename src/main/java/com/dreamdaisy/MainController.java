@@ -1,9 +1,9 @@
-package com.dreamdaisy.controller;
+package com.dreamdaisy;
 
-import com.dreamdaisy.domain.Item;
-import com.dreamdaisy.domain.Member;
-import com.dreamdaisy.service.ItemService;
-import com.dreamdaisy.service.MemberService;
+import com.dreamdaisy.item.domain.Item;
+import com.dreamdaisy.member.domain.Member;
+import com.dreamdaisy.item.service.ItemService;
+import com.dreamdaisy.member.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class MainController {
 
     @GetMapping(value = "/member/join")
     public String join() {
-        return "join";
+        return "member/join";
     }
 
     @PostMapping(value = "/member/join")
@@ -40,12 +40,12 @@ public class MainController {
                 .build();
 
         memberService.save(member);
-        return "login";
+        return "/member/login";
     }
 
     @GetMapping("/member/login")
     public String loginForm() {
-        return "login";
+        return "/member/login";
     }
 
     //로그인 구현중
@@ -63,7 +63,7 @@ public class MainController {
             return "redirect:/";
         } else {
             model.addAttribute("errorMessage", "로그인 실패");
-            return "login";
+            return "/member/login";
         }
     }
 
@@ -74,7 +74,7 @@ public class MainController {
 
     @GetMapping("/member/additem")
     public String additemForm() {
-        return "additem";
+        return "/item/additem";
     }
 
     @PostMapping("/member/additem")
@@ -99,7 +99,7 @@ public class MainController {
             member = memberService.findById(member.getId());
             model.addAttribute("member", member);
         }
-        return "mypage";
+        return "/member/mypage";
     }
 
     @GetMapping("/member/mypagemodify")
@@ -109,7 +109,7 @@ public class MainController {
             member = memberService.findById(member.getId());
             model.addAttribute("member", member);
         }
-        return "mypagemodify";
+        return "/member/mypagemodify";
     }
 
     @PostMapping("/member/mypagemodify")
@@ -140,7 +140,7 @@ public class MainController {
         if (member != null) {
             model.addAttribute("member", member);
         }
-        return "mypagedel";
+        return "/member/mypagedel";
     }
 
     @PostMapping("/member/delete")
