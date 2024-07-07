@@ -1,5 +1,7 @@
 package com.dreamdaisy.common.config;
 
+import com.dreamdaisy.common.security.CustomUserDetailsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,33 +15,37 @@ import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
+@RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final CustomUserDetailsService userDetailsService;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
 
-        http
-                .csrf(AbstractHttpConfigurer::disable)
+        http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(new MvcRequestMatcher(introspector, "/"),
                                 new MvcRequestMatcher(introspector, "/login"),
                                 new MvcRequestMatcher(introspector, "/join"),
                                 new MvcRequestMatcher(introspector, "/items/**")).permitAll()
-                        .anyRequest().permitAll());
+                        .anyRequest().authenticated());
 
-                http.formLogin(login -> login
+        http.formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login-proc")
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .failureUrl("/login?error=true")
+                        .failureUrl("/login/error")
                         .defaultSuccessUrl("/", true));
 
-                http.logout(logout -> logout
-                        .logoutSuccessUrl("/")
-                        .logoutUrl("/logout"));
+        http.logout(logout -> logout
+                .logoutSuccessUrl("/")
+                .logoutUrl("/logout"));
+
+        http.userDetailsService(userDetailsService);
 
         return http.build();
     }
@@ -54,11 +60,6 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public static BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

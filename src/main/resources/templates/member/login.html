@@ -16,13 +16,12 @@
 <div class="login-wrapper">
     <h2>Login</h2>
     <form method="post" action="/login-proc" id="login-form">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">
     </form>
-<!--    로그인수정중-->
     <div>
-        <p th:text="${errorMessage}"></p>
+        <p type="hidden" th:if="${loginError}" th:text="${loginError}"></p>
     </div>
 </div>
 </body>

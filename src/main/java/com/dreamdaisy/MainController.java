@@ -3,12 +3,16 @@ package com.dreamdaisy;
 import com.dreamdaisy.item.domain.Item;
 import com.dreamdaisy.member.domain.Member;
 import com.dreamdaisy.item.service.ItemService;
+import com.dreamdaisy.member.dto.SaveMemberDto;
 import com.dreamdaisy.member.mapper.MemberMapper;
 import com.dreamdaisy.member.service.MemberService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,29 +25,47 @@ public class MainController {
 
     private final MemberService memberService;
     private final ItemService itemService;
+    private final PasswordEncoder passwordEncoder; // 비밀번호 인코더 추가
 
+    // 웰컴페이지 랜더링 API
     @GetMapping(value = "/")
     public String getMainPage(Model model) {
         model.addAttribute("items", itemService.findAll());
         return "main";
     }
 
+    // 회원가입 페이지 랜더링 API
     @GetMapping(value = "/join")
-    public String join() {
+    public String joinPage(Model model) {
+        model.addAttribute("saveMemberDto", new SaveMemberDto());
         return "member/join";
     }
 
+    // 회원가입 API
     @PostMapping(value = "/join")
-    public String getMain(@RequestParam String email, @RequestParam String name, @RequestParam String password, @RequestParam String phone) {
+    public String register(
+            @Valid SaveMemberDto saveMemberDto,
+            BindingResult bindingResult,
+            Model model) {
+
+        // 값 대입에 오류가 존재한다면 회원가입 페이지 다시 리턴
+        if (bindingResult.hasErrors()) {
+            return "member/join";
+        }
+
+        // 비밀번호 인코딩
+        String encodedPassword = passwordEncoder.encode(saveMemberDto.getPassword());
+
         Member member = Member.builder()
-                .email(email)
-                .name(name)
-                .password(password)
-                .phone(phone)
+                .email(saveMemberDto.getEmail())
+                .name(saveMemberDto.getName())
+                .password(encodedPassword)
+                .phone(saveMemberDto.getPhone())
                 .build();
 
         memberService.save(member);
-        return "/member/login";
+
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
@@ -51,19 +73,10 @@ public class MainController {
         return "/member/login";
     }
 
-    @PostMapping("/login-proc")
-    public String loginProcess(@RequestParam("email") String email,
-                               @RequestParam("password") String password,
-                               HttpSession session,
-                               Model model) {
-        Member member = memberService.findByEmailAndPassword(email, password);
-        if (member != null) {
-            session.setAttribute("member", member);
-            return "redirect:/mypage";
-        } else {
-            model.addAttribute("loginError", true);
-            return "/member/login";
-        }
+    @GetMapping("/login/error")
+    public String loginErrorForm(Model model) {
+        model.addAttribute("loginError", "아이디 또는 비밀번호를 확인해 주세요.");
+        return "/member/login";
     }
 
     @GetMapping("/cart")
@@ -132,17 +145,19 @@ public class MainController {
             @RequestParam String phone,
             HttpSession session) {
 
+        // 비밀번호 인코딩
+        String encodedPassword = passwordEncoder.encode(password);
         Member member = Member.builder()
                 .id(id)
                 .email(email)
                 .name(name)
-                .password(password)
+                .password(encodedPassword)
                 .phone(phone)
                 .build();
 
         memberService.update(member);
         session.setAttribute("member", member);
-        return "redirect:/";
+        return "redirect:/mypage";
     }
 
     @GetMapping("/mypage/mypagedel")
@@ -154,12 +169,12 @@ public class MainController {
         return "/member/mypagedel";
     }
 
-//    @PostMapping("/member/delete")
-//    public String deleteMember(@RequestParam Long id, HttpSession session) {
-//        memberService.delete(id);
-//        session.invalidate();
-//        return "redirect:/";
-//    }
+    @PostMapping("/mypage/mypagedel")
+    public String mypageDelete(@RequestParam Long id, HttpSession session) {
+        memberService.delete(id);
+        session.invalidate();
+        return "redirect:/";
+    }
 
     @GetMapping("/logout")
     public String logoutForm(HttpSession session) {
@@ -167,45 +182,3 @@ public class MainController {
         return "redirect:/";
     }
 }
-
-//    @PostMapping("/login-proc")
-//    public String loginProc(@RequestParam("email") String email,
-//                            @RequestParam("password") String password,
-//                            Model model,
-//                            RedirectAttributes redirectAttributes) {
-//
-//        // 사용자 인증 로직
-//        boolean isAuthenticated = MemberMapperSS.authenticate(email, password);
-//
-//        if (isAuthenticated) {
-//            // 인증 성공 시 세션에 사용자 정보 저장 등 필요한 추가 작업 수행
-//            // 여기서는 세션에 사용자 정보를 저장하는 예시를 보여줍니다 (세션에 저장된 사용자 정보는 SecurityConfig에서 처리)
-//            // SecurityContext에서 인증 객체를 가져와서 세션에 저장할 수도 있습니다.
-//            // SecurityContextHolder.getContext().setAuthentication(authentication);
-//
-//            // 로그인 성공 후 홈 페이지로 리다이렉트
-//            return "redirect:/";
-//        } else {
-//            // 인증 실패 시 에러 메시지를 모델에 추가하여 로그인 페이지로 다시 이동
-//            model.addAttribute("errorMessage", "Invalid email or password");
-//            return "login"; // 로그인 페이지로 다시 이동
-//        }
-//    }
-//로그인 구현중
-//    @PostMapping("/login")
-//    public String login(
-//            @RequestParam String email,
-//            @RequestParam String password,
-//            HttpSession session,
-//            Model model) {
-//        Member member = memberService.findByEmailAndPassword(email, password);
-//
-//        if (member != null) {
-//            session.setAttribute("member", member);//수정
-//            model.addAttribute("member", member);
-//            return "redirect:/";
-//        } else {
-//            model.addAttribute("errorMessage", "로그인 실패");
-//            return "/member/login";
-//        }
-//    }

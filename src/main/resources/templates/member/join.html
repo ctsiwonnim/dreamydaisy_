@@ -14,7 +14,7 @@
     <a href="/cart"><span class="ex">CART</span></a>
     <a href="/additem"><span class="ex">ADD ITEM</span></a>
 </div>
-<form method="post" action="/join" id="join-form">
+<form method="post" action="/join" id="join-form" th:object="${saveMemberDto}">
     <div class="container">
         <div class="member-container">
             <div class="header">
@@ -22,20 +22,20 @@
                 <div>정보를 입력해주세요</div>
             </div>
             <div class="user-info">
-                <label for="email">* EMAIL</label>
-                <input type="email" id="email" name="email" required />
+                <label th:for="email">* EMAIL</label>
+                <input type="email" th:field="*{email}" required />
 
-                <label for="name">* NAME</label>
-                <input type="text" id="name" name="name" required />
+                <label th:for="name">* NAME</label>
+                <input type="text" th:field="*{name}" required />
 
-                <label for="password">* PASSWORD</label>
-                <input type="password" id="password" name="password" required />
+                <label th:for="password">* PASSWORD</label>
+                <input type="password" th:field="*{password}" required />
 
                 <label for="confirm-password">* CONFIRM-PASSWORD</label>
                 <input type="password" id="confirm-password" name="confirm-password" required />
 
-                <label for="phone">* PHONE NUMBER</label>
-                <input type="text" id="phone" name="phone" required />
+                <label th:for="phone">* PHONE NUMBER</label>
+                <input type="tel" th:field="*{phone}" required />
             </div>
 
             <div class="agree-check">

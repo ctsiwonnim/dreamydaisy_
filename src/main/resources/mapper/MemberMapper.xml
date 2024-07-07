@@ -14,6 +14,12 @@
         where email = #{email} and password = #{password};
     </select>
 
+    <select id="findByEmail" resultType="com.dreamdaisy.member.domain.Member">
+        select id, email, name, password, phone
+        from member
+        where email = #{email};
+    </select>
+
     <select id="findById" resultType="com.dreamdaisy.member.domain.Member">
         select id, email, name, password, phone
         from member
