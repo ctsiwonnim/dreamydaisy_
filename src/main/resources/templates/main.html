@@ -10,24 +10,18 @@
 </head>
 <body>
 <div class="top-section">
-    <span class="ex" th:if="${session.member == null}"><a href="/member/login">LOGIN</a></span>
+    <span class="ex" th:if="${session.member == null}"><a th:href="@{/login}">LOGIN</a></span>
     <span class="ex" th:if="${session.member != null}">Hello, <span th:text="${session.member.name}"></span>
-        <a href="/member/logout"><span class="ex">LOGOUT</span></a>
+        <a href="/logout"><span class="ex">LOGOUT</span></a>
     </span>
-    <a href="/member/join"><span class="ex">JOIN</span></a>
-    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/member/cart"><span class="ex">CART</span></a>
-    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+    <a href="/join"><span class="ex">JOIN</span></a>
+    <a href="/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/cart"><span class="ex">CART</span></a>
+    <a href="/additem"><span class="ex">ADD ITEM</span></a>
 </div>
 
 <div class="banner-section">
-    <!-- 배너 이미지 및 다른 콘텐츠 추가 -->
-    <div class="search-box">
-        검색
-    </div>
 </div>
-<br>
-
 <br>
 <section class="py-5">
     <div class="container px-4 px-lg-5 mt-5">

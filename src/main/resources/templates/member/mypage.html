@@ -9,46 +9,47 @@
 <div class="top-section">
     <a href="/"><span class="ex">HOME</span></a>
     <span class="ex" th:if="${session.member != null}"></span>
-        <a href="/member/logout"><span class="ex">LOGOUT</span></a>
+        <a href="/logout"><span class="ex">LOGOUT</span></a>
     </span>
-    <a href="/member/join"><span class="ex">JOIN</span></a>
-    <a href="/member/cart"><span class="ex">CART</span></a>
-    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+    <a href="/join"><span class="ex">JOIN</span></a>
+    <a href="/cart"><span class="ex">CART</span></a>
+    <a href="/additem"><span class="ex">ADD ITEM</span></a>
 </div>
 
 <div class="container">
     <div class="jumbotron">
-        <form method="post" action="/member/mypage">
+        <form method="post" action="/mypage"  id="mypage-form" enctype="multipart/form-data">
             <h3 style="text-align: center;">회원정보 상세</h3>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <div class="text-value" id="email" th:text="${member.email}">null</div>
+                <div class="text-value" id="email" th:text="${member != null ? member.email : 'N/A'}">null</div>
             </div>
             <div class="form-group">
                 <label for="name">Name:</label>
-                <div class="text-value" id="name" th:text="${member.name}">null</div>
+                <div class="text-value" id="name" th:text="${member != null ? member.name : 'N/A'}">null</div>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <div class="text-value" id="password" th:text="${member.password}">null</div>
+                <div class="text-value" id="password" th:text="${member != null ? member.password : 'N/A'}">null</div>
             </div>
             <div class="form-group">
                 <label for="phone">Phone number:</label>
-                <div class="text-value" id="phone" th:text="${member.phone}">null</div>
+                <div class="text-value" id="phone" th:text="${member != null ? member.phone : 'N/A'}">null</div>
             </div>
         </form>
-        <form method="get" action="/member/mypagemodify">
+        <form method="get" action="/mypage/mypagemodify">
             <div class="btn-container">
                 <button type="submit" class="btn btn-primary form-control">수정하기</button>
             </div>
         </form>
-        <form method="get" action="/member/mypagedel">
+        <form method="get" action="/mypage/mypagedel">
             <div class="btn-container">
                 <button type="submit" class="btn btn-danger form-control">삭제하기</button>
             </div>
         </form>
     </div>
 </div>
+
 
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>

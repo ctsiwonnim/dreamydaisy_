@@ -10,7 +10,7 @@ import lombok.*;
 public class Order {
     private Integer id;
     private Integer quantity;
-    private Integer totalPrice;
+    private Integer totalprice;
     private String orderer;
     private String itemname;
 }

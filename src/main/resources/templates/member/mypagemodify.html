@@ -9,17 +9,17 @@
 <div class="top-section">
     <a href="/"><span class="ex">HOME</span></a>
     <span class="ex" th:if="${session.member != null}">
-        <a href="/member/logout"><span class="ex">LOGOUT</span></a>
+        <a href="/logout"><span class="ex">LOGOUT</span></a>
     </span>
-    <a href="/member/join"><span class="ex">JOIN</span></a>
-    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/member/cart"><span class="ex">CART</span></a>
-    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+    <a href="/join"><span class="ex">JOIN</span></a>
+    <a href="/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/cart"><span class="ex">CART</span></a>
+    <a href="/additem"><span class="ex">ADD ITEM</span></a>
 </div>
 
 <div class="container">
     <div class="jumbotron">
-        <form method="post" action="/member/mypagemodify" onsubmit="return validateForm()">
+        <form method="post" action="/mypagemodify" onsubmit="return validateForm()">
             <h3 style="text-align: center;">회원정보 수정</h3>
             <div class="form-group">
                 <label for="email">Email:</label>

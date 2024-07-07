@@ -10,14 +10,14 @@
 <div class="top-section">
     <a href="/"><span class="ex">HOME</span></a>
     <span class="ex" th:if="${session.member != null}"></span>
-        <a href="/member/logout"><span class="ex">LOGOUT</span></a>
+        <a href="/logout"><span class="ex">LOGOUT</span></a>
     </span>
-    <a href="/member/join"><span class="ex">JOIN</span></a>
-    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/member/cart"><span class="ex">CART</span></a>
+    <a href="/join"><span class="ex">JOIN</span></a>
+    <a href="/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/cart"><span class="ex">CART</span></a>
 </div>
 
-<form method="post" action="/member/additem" id="additem-form" enctype="multipart/form-data">
+<form method="post" action="/additem" id="additem-form" enctype="multipart/form-data">
     <table id="container">
         <tr>
             <td id="result" colspan="2"></td>

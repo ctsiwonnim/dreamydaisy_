@@ -26,7 +26,7 @@ public class ItemController {
 
     @GetMapping("/items/itemmodify")
     public String itemmodifyForm() {
-        return "itemmodify";
+        return "/item/itemmodify";
     }
 
     @PostMapping("/items/itemmodify")

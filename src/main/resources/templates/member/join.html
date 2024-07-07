@@ -8,13 +8,13 @@
 <div class="top-section">
     <a href="/"><span class="ex">HOME</span></a>
     <span class="ex" th:if="${session.member != null}">
-        <a href="/member/logout"><span class="ex">LOGOUT</span></a>
+        <a href="/logout"><span class="ex">LOGOUT</span></a>
     </span>
-    <a href="/member/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/member/cart"><span class="ex">CART</span></a>
-    <a href="/member/additem"><span class="ex">ADD ITEM</span></a>
+    <a href="/mypage"><span class="ex">MYPAGE</span></a>
+    <a href="/cart"><span class="ex">CART</span></a>
+    <a href="/additem"><span class="ex">ADD ITEM</span></a>
 </div>
-<form method="post" action="/member/join" id="join-form">
+<form method="post" action="/join" id="join-form">
     <div class="container">
         <div class="member-container">
             <div class="header">
