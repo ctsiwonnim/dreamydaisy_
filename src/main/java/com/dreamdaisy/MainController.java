@@ -1,23 +1,24 @@
 package com.dreamdaisy;
 
 import com.dreamdaisy.item.domain.Item;
-import com.dreamdaisy.member.domain.Member;
 import com.dreamdaisy.item.service.ItemService;
+import com.dreamdaisy.member.domain.Member;
 import com.dreamdaisy.member.dto.SaveMemberDto;
-import com.dreamdaisy.member.mapper.MemberMapper;
 import com.dreamdaisy.member.service.MemberService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RequiredArgsConstructor
 @Controller
@@ -31,6 +32,11 @@ public class MainController {
     @GetMapping(value = "/")
     public String getMainPage(Model model) {
         model.addAttribute("items", itemService.findAll());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() && !(authentication instanceof AnonymousAuthenticationToken)) {
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+            model.addAttribute("username", userDetails.getUsername());
+        }
         return "main";
     }
 

@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>main</title>
+    <title>Main</title>
     <link rel="stylesheet" href="/css/mainst.css">
 </head>
 <body>
 <div class="top-section">
-    <span class="ex" th:if="${session.member == null}"><a th:href="@{/login}">LOGIN</a></span>
-    <span class="ex" th:if="${session.member != null}">Hello, <span th:text="${session.member.name}"></span>
-        <a href="/logout"><span class="ex">LOGOUT</span></a>
+    <span class="ex" sec:authorize="isAnonymous()">
+        <a th:href="@{/login}">LOGIN</a>
     </span>
-    <a href="/join"><span class="ex">JOIN</span></a>
-    <a href="/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/cart"><span class="ex">CART</span></a>
-    <a href="/additem"><span class="ex">ADD ITEM</span></a>
+    <span class="ex" sec:authorize="isAuthenticated()">
+        Hello, <span sec:authentication="name"></span>
+        <a th:href="@{/logout}">LOGOUT</a>
+    </span>
+    <a th:href="@{/join}"><span class="ex">JOIN</span></a>
+    <a th:href="@{/mypage}"><span class="ex">MYPAGE</span></a>
+    <a th:href="@{/cart}"><span class="ex">CART</span></a>
+    <a th:href="@{/additem}"><span class="ex">ADD ITEM</span></a>
 </div>
 
 <div class="banner-section">
@@ -34,9 +38,9 @@
                     <div class="card-body p-4">
                         <div class="text-center">
                             <!-- Product name-->
-                            <h5 class="fw-bolder" name="name" th:text="${item.name}"></h5>
+                            <h5 class="fw-bolder" th:name="name" th:text="${item.name}"></h5>
                             <!-- Product price-->
-                            <span name="price" th:text="${item.price}">$40.00 - $80.00</span>
+                            <span th:name="price" th:text="${item.price}">$40.00 - $80.00</span>
                         </div>
                     </div>
                     <!-- Product actions-->
