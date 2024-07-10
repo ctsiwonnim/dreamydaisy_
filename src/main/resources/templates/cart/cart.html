@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<body>
+<main layout:fragment="content">
+    <div th:if="${cart != null}">
+        <table>
+            <tr>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="item : ${cart.items}">
+                <td th:text="${item.productId}">Product ID</td>
+                <td>
+                    <form th:action="@{/cart/item/{cartItemId}/update(cartItemId=${item.id},userId=${cart.userId})}" method="post">
+                        <input type="number" name="quantity" th:value="${item.quantity}" min="1"/>
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+                <td>
+                    <!-- You can add delete functionality here -->
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</main>
+</body>
+</html>

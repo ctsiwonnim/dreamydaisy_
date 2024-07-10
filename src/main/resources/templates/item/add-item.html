@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Myshop</title>
+    <script src="/js/additem.js"></script>
+    <link rel="stylesheet" href="/css/additemst.css">
+</head>
+<body>
+<main layout:fragment="content">
+    <form method="post" action="/addItem" th:object="${saveItemDto}">
+        <table id="container">
+            <tr>
+                <td id="result" colspan="2"></td>
+            </tr>
+            <tr>
+                <th><label th:for="name">상품명</label></th>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{name}" placeholder="상품명을 입력해주세요">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th><label th:for="price">가격</label></th>
+                <td>
+                    <label>
+                        <input type="number" th:field="*{price}" placeholder="가격을 입력해주세요.">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th><label th:for="name">상품 설명</label></th>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{description}" placeholder="상품 설명을 입력해주세요.">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="submit" id="submitButn" value="등록하기">
+                </th>
+            </tr>
+        </table>
+    </form>
+</main>
+</body>
+</html>

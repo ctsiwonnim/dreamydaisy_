@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -28,23 +27,21 @@ public class SecurityConfig {
 
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(new MvcRequestMatcher(introspector, "/"),
-                                new MvcRequestMatcher(introspector, "/login"),
-                                new MvcRequestMatcher(introspector, "/join"),
-                                new MvcRequestMatcher(introspector, "/items/**")).permitAll()
+                        .requestMatchers("/", "/join", "/items/**", "/login").permitAll()
                         .anyRequest().authenticated());
 
         http.formLogin(login -> login
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login-proc")
-                        .usernameParameter("email")
-                        .passwordParameter("password")
-                        .failureUrl("/login/error")
-                        .defaultSuccessUrl("/", true));
+                .loginPage("/login")
+                .loginProcessingUrl("/login-proc")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .failureUrl("/login/error")
+                .defaultSuccessUrl("/", true));
 
         http.logout(logout -> logout
                 .logoutSuccessUrl("/")
-                .logoutUrl("/logout"));
+                .logoutUrl("/logout")
+                .permitAll());
 
         http.userDetailsService(userDetailsService);
 

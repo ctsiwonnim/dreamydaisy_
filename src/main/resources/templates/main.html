@@ -1,61 +1,42 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Main</title>
-    <link rel="stylesheet" href="/css/mainst.css">
-</head>
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
 <body>
-<div class="top-section">
-    <span class="ex" sec:authorize="isAnonymous()">
-        <a th:href="@{/login}">LOGIN</a>
-    </span>
-    <span class="ex" sec:authorize="isAuthenticated()">
-        Hello, <span sec:authentication="name"></span>
-        <a th:href="@{/logout}">LOGOUT</a>
-    </span>
-    <a th:href="@{/join}"><span class="ex">JOIN</span></a>
-    <a th:href="@{/mypage}"><span class="ex">MYPAGE</span></a>
-    <a th:href="@{/cart}"><span class="ex">CART</span></a>
-    <a th:href="@{/additem}"><span class="ex">ADD ITEM</span></a>
-</div>
+<main layout:fragment="content">
+    <div class="banner-section">
+    </div>
+    <br>
+    <section class="py-5">
+        <div class="container px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
+                <div class="col mb-5" th:each="item : ${items}">
+                    <div class="card">
+                        <!-- Product image-->
+                        <a th:href="@{/items/{id}(id=${item.id})}">
+                            <img class="card-img-top"
+                                 src="https://shop-phinf.pstatic.net/20240601_73/1717169683214xCCy1_JPEG/118305571900963237_1856526655.JPG?type=f295_381"
+                                 alt="..." width="350px" height="300px"/>
+                        </a>
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product price-->
+                                <a th:href="@{/items/{id}(id=${item.id})}">
+                                    <span class="price" name="price" th:text="${item.price}">$40.00 - $80.00</span>
+                                </a>
+                                <!-- Product name-->
+                                <a th:href="@{/items/{id}(id=${item.id})}">
+                                    <h5 class="fw-bolder" name="name" th:text="${item.name}"></h5>
+                                </a>
 
-<div class="banner-section">
-</div>
-<br>
-<section class="py-5">
-    <div class="container px-4 px-lg-5 mt-5">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-lg-4 justify-content-center">
-            <div class="col mb-5" th:each="item : ${items}">
-                <div class="card">
-                    <!-- Product image-->
-                    <img class="card-img-top" src="/img/P20200410_175958652_E35FC255-2163-47C8-8C91-36A3D076610E.JPG" alt="..." width="350px" height="300px" />
-                    <!-- Product details-->
-                    <div class="card-body p-4">
-                        <div class="text-center">
-                            <!-- Product name-->
-                            <h5 class="fw-bolder" th:name="name" th:text="${item.name}"></h5>
-                            <!-- Product price-->
-                            <span th:name="price" th:text="${item.price}">$40.00 - $80.00</span>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Product actions-->
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="@{/items/{id}(id=${item.id})}">Product details</a></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-<div class="mb-5 container-fluid">
-    <hr>
-    <p> ⓒ 2024 Shopping Mall Example WebSite </p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </section>
+</main>
 </body>
 </html>

@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf"
+      layout:decorate="~{/layout/layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Mypage</title>
+    <title>ITEM</title>
     <link rel="stylesheet" href="/css/itemst.css">
 </head>
 <body>
-<div class="top-section">
-    <a href="/"><span class="ex">HOME</span></a>
-    <span class="ex" th:if="${session.member == null}"><a href="/login">LOGIN</a></span>
-    <span class="ex" th:if="${session.member != null}">
-        <a href="/logout"><span class="ex">LOGOUT</span></a>
-    </span>
-    <a href="/join"><span class="ex">JOIN</span></a>
-    <a href="/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/cart"><span class="ex">CART</span></a>
-    <a href="/additem"><span class="ex">ADD ITEM</span></a>
-</div>
+<main layout:fragment="content" th:object="${item}">
 <div class="container">
     <div class="jumbotron">
         <h3 style="text-align: center;" th:text="${item.name}">상품 이름</h3>
@@ -28,13 +20,17 @@
             <label for="itemscript">Description:</label>
             <div class="text-value" id="itemscript" th:text="${item.itemscript}">설명</div>
         </div>
-        <form method="get" action="/items/itemmodify">
+        <form method="get" action="/items/item-modify">
             <div class="btn-container">
                 <button type="submit" class="btn btn-primary form-control">수정하기</button>
             </div>
         </form>
+        <div class="btn-container">
+            <button type="submit" class="btn btn-primary form-control">장바구니 담기</button>
+        </div>
     </div>
 </div>
+</main>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 </body>

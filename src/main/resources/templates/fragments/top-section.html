@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Top Section</title>
+    <link rel="stylesheet" href="/css/mainst.css">
+</head>
+<body>
+<div th:fragment="topSection">
+    <div class="top-section">
+        <!-- 로고 추가 -->
+        <div class="logo">
+            <a th:href="@{/}">
+                <img src="/img/logo.png" alt="Logo" width="50" height="50"/>
+            </a>
+        </div>
+        <div class="auth-links">
+            <div sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">
+                    <span class="ex">LOGIN</span>
+                </a>
+                <a th:href="@{/join}">
+                    <span class="ex">JOIN</span>
+                </a>
+            </div>
+            <div sec:authorize="isAuthenticated()">
+                <a th:href="@{/profile}" sec:authorize="isAuthenticated()">
+                    <span class="ex">MYPAGE</span>
+                </a>
+                <a th:href="@{/cart}" sec:authorize="isAuthenticated()">
+                    <span class="ex">CART</span>
+                </a>
+                <a th:href="@{/addItem}" sec:authorize="isAuthenticated()">
+                    <span class="ex">ADD ITEM</span>
+                </a>
+                <form th:action="@{/logout}" method="post" class="logout-form" sec:authorize="isAuthenticated()">
+                    <input class="ex logout-button" type="submit" value="LOGOUT"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
