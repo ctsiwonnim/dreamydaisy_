@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dreamdaisy.cart.mapper.CartMapper"> <!-- Ensure this matches the interface's package and name -->
+<mapper namespace="com.dreamdaisy.cart.mapper.CartMapper">
     <select id="findByUserId" parameterType="long" resultType="com.dreamdaisy.cart.domain.Cart">
         SELECT * FROM cart WHERE member_id = #{userId}
     </select>
@@ -12,6 +12,10 @@
 
     <select id="findItemsByCartId" parameterType="long" resultType="com.dreamdaisy.cart.domain.CartItem">
         SELECT * FROM cart_item WHERE cart_id = #{cartId}
+    </select>
+
+    <select id="findCartItemByCartIdAndItemId" parameterType="map" resultType="com.dreamdaisy.cart.domain.CartItem">
+        SELECT * FROM cart_item WHERE cart_id = #{cartId} AND item_id = #{itemId}
     </select>
 
     <insert id="insertCartItem" parameterType="com.dreamdaisy.cart.domain.CartItem">

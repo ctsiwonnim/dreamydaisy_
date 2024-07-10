@@ -34,4 +34,26 @@ public class CartService {
         cartItem.setQuantity(quantity);
         cartMapper.updateCartItem(cartItem);
     }
+
+    @Transactional
+    public void addToCart(Long memberId, Long itemId) {
+        Cart cart = cartMapper.findByUserId(memberId);
+        if (cart == null) {
+            cart = new Cart();
+            cart.setMemberId(memberId);
+            cartMapper.insertCart(cart);
+        }
+
+        CartItem cartItem = cartMapper.findCartItemByCartIdAndItemId(cart.getId(), itemId);
+        if (cartItem == null) {
+            cartItem = new CartItem();
+            cartItem.setCartId(cart.getId());
+            cartItem.setItemId(itemId);
+            cartItem.setQuantity(1); // Default quantity
+            cartMapper.insertCartItem(cartItem);
+        } else {
+            cartItem.setQuantity(cartItem.getQuantity() + 1);
+            cartMapper.updateCartItem(cartItem);
+        }
+    }
 }

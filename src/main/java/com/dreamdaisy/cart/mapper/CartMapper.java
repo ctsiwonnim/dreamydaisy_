@@ -15,6 +15,8 @@ public interface CartMapper {
 
     List<CartItem> findItemsByCartId(@Param("cartId") Long cartId);
 
+    CartItem findCartItemByCartIdAndItemId(@Param("cartId") Long cartId, @Param("itemId") Long itemId);
+
     void insertCartItem(CartItem cartItem);
 
     void updateCartItem(CartItem cartItem);

@@ -25,9 +25,12 @@
                 <button type="submit" class="btn btn-primary form-control">수정하기</button>
             </div>
         </form>
-        <div class="btn-container">
-            <button type="submit" class="btn btn-primary form-control">장바구니 담기</button>
-        </div>
+        <form method="post" th:action="@{/cart/add}">
+            <input type="hidden" name="itemId" th:value="${item.id}">
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary form-control">장바구니 담기</button>
+            </div>
+        </form>
     </div>
 </div>
 </main>

@@ -43,4 +43,15 @@ public class CartController {
         cartService.updateCartItem(cartItemId, quantity);
         return "redirect:/cart";
     }
+
+    @PostMapping("/cart/add")
+    public String addToCart(@RequestParam Long itemId, HttpSession session) {
+        Long memberId = (Long) session.getAttribute("userId");
+        if (memberId == null) {
+            return "redirect:/login";
+        }
+
+        cartService.addToCart(memberId, itemId);
+        return "redirect:/cart";
+    }
 }
