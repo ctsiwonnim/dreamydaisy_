@@ -1,211 +1,213 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
 
 body {
-  margin: 0;
-  font-family: 'Noto Sans', Arial, sans-serif;
+    margin: 0;
+    font-family: 'Noto Sans', Arial, sans-serif;
 }
 
 .top-section {
-  width: 100%;
-  background-color: #F6A5B7;
-  padding: 5px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 100%;
+    background-color: #F6A5B7;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo a {
-  display: block;
+    display: block;
 }
 
 .auth-links {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .top-section a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin: 0 15px;
 }
 
 .ex {
-  color: white;
-  line-height: 30px;
+    color: white;
+    line-height: 30px;
 }
 
 .logout-form {
-  display: inline;
-  margin-left: 15px;
+    display: inline;
+    margin-left: 15px;
 }
 
 .logout-button {
-  background-color: #808080;
-  border: none;
-  color: white;
-  padding: 5px 10px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+    background-color: #808080;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .logout-button:hover {
-  background-color: #666666;
+    background-color: #666666;
+}
+
+.parent-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .banner-section {
-  height: 280px;
-  background-image: url("https://static.wixstatic.com/media/31c96f_a07c4bbedde44d93998a4afa845fe3c8~mv2.jpg");
-  background-size: cover;
-  position: relative;
+    flex-grow: 1;
+    min-height: 280px;
+    height: 320px !important;
+    background-image: url("https://static.wixstatic.com/media/31c96f_a07c4bbedde44d93998a4afa845fe3c8~mv2.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
 .search-box {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  background-color: #FFF8C1;
-  padding: 5px;
-  border-radius: 5px;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: #FFF8C1;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 #menu ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 
 #menu li {
-  display: inline-block;
-  margin-right: 10px;
+    display: inline-block;
+    margin-right: 10px;
 }
 
 #menu li a {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
 
 .row-cols-2.row-cols-md-3.row-cols-lg-4 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
-  flex: 0 0 23%;
-  max-width: 23%;
-  margin-bottom: 20px;
+    flex: 0 0 23%;
+    max-width: 23%;
+    margin-bottom: 20px;
 }
 
 .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col:nth-child(4n+1) {
-  margin-left: 5%;
+    margin-left: 5%;
 }
 
 @media (max-width: 1200px) {
-  .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
-    flex: 0 0 32%;
-    max-width: 32%;
-  }
+    .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
+        flex: 0 0 32%;
+        max-width: 32%;
+    }
 }
 
 @media (max-width: 992px) {
-  .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
-    flex: 0 0 48%;
-    max-width: 48%;
-  }
+    .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
+        flex: 0 0 48%;
+        max-width: 48%;
+    }
 }
 
 @media (max-width: 576px) {
-  .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+    .row-cols-2.row-cols-md-3.row-cols-lg-4 > .col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
 }
 
 .container-fluid {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
 }
 
 .spacer {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 
 .card-link {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 .card-link .card {
-  transition: transform 0.2s;
+    transition: transform 0.2s;
 }
 
 .card-link:hover .card {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 카드 내용을 가운데 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-img-top {
-  width: 100%; /* 이미지를 카드 너비에 맞춤 */
-  height: auto; /* 이미지 비율 유지 */
-  object-fit: cover; /* 이미지가 컨테이너를 채우도록 설정 */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 0.5rem; /* 이미지 아래 마진 조정 */
 }
 
 .card-body {
-  padding-top: 3px;
-  text-align: center;
-  width: 100%; /* 카드 본문의 너비를 100%로 설정 */
+    padding: 1rem !important; /* 카드 본문의 패딩 조정 */
+    text-align: center;
+    width: 100%;
 }
 
-.price {
-  font-weight: bold;
-  font-size: 1.5em;
-  font-family: 'Noto Sans', Arial, sans-serif;
-  color: blue; /* 가격 색상을 파란색으로 변경 */
-  display: block; /* 블록 레벨 요소로 변경하여 너비 전체를 차지하게 함 */
-  margin-bottom: 5px; /* 가격과 상품명 사이에 간격 추가 */
+/* 가격 스타일 */
+.price,
+.card-link .price {
+    font-weight: bold;
+    font-size: 1.5em;
+    font-family: 'Noto Sans', Arial, sans-serif;
+    color: #307bad !important;
+    display: block;
+    margin-bottom: 0.5rem; /* 가격과 상품명 사이 간격 조정 */
+    text-decoration: none !important;
 }
 
-.product-name {
-  color: black; /* 상품 이름 색상을 검정색으로 변경 */
-  font-size: 1.2em; /* 상품명 크기 조정 */
-  margin-top: 5px; /* 상품명 위 간격 추가 */
-}
-
-.card-link {
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
-}
-
-.card-link .card {
-  transition: transform 0.2s;
-}
-
-.card-link:hover .card {
-  transform: scale(1.05);
+/* 상품명 스타일 */
+.product-name,
+.card-link .product-name {
+    color: black !important;
+    font-size: 1.2em;
+    margin-top: 0.5rem; /* 상품명 위 간격 조정 */
+    margin-bottom: 0.5rem; /* 상품명 아래 간격 조정 */
+    text-decoration: none !important;
 }
 
 @media (max-width: 992px) {
-  .card-img-top {
-    height: 200px; /* 더 작은 화면에서 이미지 높이 조정 */
-  }
+    .card-img-top {
+        height: 200px;
+    }
 }
 
 @media (max-width: 768px) {
-  .card-img-top {
-    height: 150px;
-  }
+    .card-img-top {
+        height: 150px;
+    }
 }

@@ -6,35 +6,47 @@
 
 body {
      display: flex;
-     flex-direction: row;
-     justify-content: center;
+     flex-direction: column;
+     justify-content: space-between;
      font-size: 14px;
      font-family: 'Roboto', sans-serif;
+     margin: 0;
+     min-height: 100vh; /* Ensure body takes full height */
+     background-color: #f8f8f8;
 }
+
+main {
+     flex: 1; /* Allow main content to grow and push footer to the bottom */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     padding-top: 100px; /* Ensure enough space below the fixed header */
+}
+
 .top-section {
-    width: 100%;
-    background-color: #F6A5B7;
-    text-align: right;
-    padding: 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
+     width: 100%;
+     background-color: #F6A5B7;
+     text-align: right;
+     padding: 10px;
+     position: fixed;
+     top: 0;
+     left: 0;
 }
 
 .top-section a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    margin: 0 10px;
+     text-decoration: none;
+     color: white;
+     font-size: 16px;
+     margin: 0 10px;
 }
+
 .container {
      display: flex;
      flex-direction: column;
      align-items: center;
-     width: 670px;
-     height: 960px;
-     margin-top: 60px;
-     margin-bottom: 60px;
+     width: 447px; /* 670px / 1.5 */
+     height: auto; /* Adjust height to fit content */
+     padding: 30px 0; /* Add vertical padding for better spacing */
      background: #ffffff;
      border: 1px solid #cfcfcf;
      border-radius: 20px;
@@ -44,112 +56,109 @@ body {
      display: flex;
      flex-direction: column;
      align-items: center;
-     width: 470px;
-     height: 818px;
-     margin-top: 72px;
-     margin-bottom: 70px;
+     width: 313px; /* 470px / 1.5 */
+     height: auto; /* Adjust height to fit content */
 }
 
 .header {
-     width: 466px;
-     height: 94px;
+     width: 310px; /* 466px / 1.5 */
+     height: 62px; /* 94px / 1.5 */
      font-weight: 700;
-     font-size: 32px;
-     line-height: 47px;
+     font-size: 21px; /* 32px / 1.5 */
+     line-height: 31px; /* 47px / 1.5 */
      color: #F6A5B7;
+     text-align: center; /* Added to center the text */
+     margin-bottom: 20px; /* Add margin-bottom for better spacing */
 }
 
 .user-info {
-    width: 466px;
+     width: 310px; /* 466px / 1.5 */
 }
 
 .user-info label {
      display: block;
      font-weight: 400;
-     font-size: 16px;
-     line-height: 24px;
+     font-size: 11px; /* 16px / 1.5 */
+     line-height: 16px; /* 24px / 1.5 */
      color: #797979;
-     margin-top: 21px;
+     margin-top: 14px; /* 21px / 1.5 */
 }
 
 .user-info input {
      width: 100%;
-     height: 48px;
+     height: 32px; /* 48px / 1.5 */
      border: 1px solid #cfcfcf;
-     margin-top: 10px;
-     padding: 10px;
-     font-size: 16px;
+     margin-top: 7px; /* 10px / 1.5 */
+     padding: 7px; /* 10px / 1.5 */
+     font-size: 11px; /* 16px / 1.5 */
      box-sizing: border-box;
-    margin-bottom: 16px;
-    border-radius: 6px;
-    background-color: #F8F8F8;
-}
-
-.user-info #email {
-    border-color: #cfcfcf;
+     margin-bottom: 11px; /* 16px / 1.5 */
+     border-radius: 6px;
+     background-color: #F8F8F8;
 }
 
 .gender {
      display: flex;
      align-items: center;
      justify-content: space-between;
-     width: 140px;
-     height: 23.94px;
-     margin-top: 50px;
+     width: 93px; /* 140px / 1.5 */
+     height: 16px; /* 23.94px / 1.5 */
+     margin-top: 33px; /* 50px / 1.5 */
 }
 
 .gender input {
-     width: 20px;
-     height: 19.95px;
+     width: 13px; /* 20px / 1.5 */
+     height: 13px; /* 19.95px / 1.5 */
      background: #ebebeb;
      border: 1px solid #d2d2d2;
 }
 
 .gender label {
      font-weight: 400;
-     font-size: 16px;
-     line-height: 24px;
+     font-size: 11px; /* 16px / 1.5 */
+     line-height: 16px; /* 24px / 1.5 */
 }
 
 .agree-check {
-     width: 454px;
-     height: 21.06px;
-     margin-top: 20px;
+     width: 303px; /* 454px / 1.5 */
+     height: 14px; /* 21.06px / 1.5 */
+     margin-top: 13px; /* 20px / 1.5 */
      font-weight: 400;
-     font-size: 14px;
-     line-height: 21px;
+     font-size: 9px; /* 14px / 1.5 */
+     line-height: 14px; /* 21px / 1.5 */
      color: #000000;
+     margin-bottom: 20px; /* Increase bottom margin for space below checkbox */
 }
 
 .agree-check label {
      vertical-align: middle;
-     font-size: 12px;
+     font-size: 8px; /* 12px / 1.5 */
 }
 
 .agree-check input {
-    margin-right: 10px;
+     margin-right: 7px; /* 10px / 1.5 */
 }
 
 .btn {
      display: flex;
      flex-direction: column;
-     margin-top: 30px;
-     width: 470px;
-     height: 106px;
+     margin-top: 20px; /* 30px / 1.5 */
+     width: 313px; /* 470px / 1.5 */
+     height: auto; /* Adjust height to fit content */
      border-top: 1px solid #e6e6e6;
 }
 
 button {
-     margin-top: 10px;
-     width: 470px;
-     height: 75px;
+     margin-top: 7px; /* 10px / 1.5 */
+     width: 313px; /* 470px / 1.5 */
+     height: 50px; /* 75px / 1.5 */
      font-family: 'Roboto', sans-serif;
-     line-height: 27px;
+     line-height: 18px; /* 27px / 1.5 */
      text-align: center;
      border-radius: 10px;
      border: 1px solid #CBE8B2;
-     font-size: 16px;
-     color : #FFFFFF;
-     font-weight : bold;
+     font-size: 11px; /* 16px / 1.5 */
+     color: #FFFFFF;
+     font-weight: bold;
      background-color: #CBE8B2;
 }

@@ -28,16 +28,16 @@
                 </a>
             </div>
             <div sec:authorize="isAuthenticated()">
-                <a th:href="@{/profile}" sec:authorize="isAuthenticated()">
+                <a th:href="@{/profile}">
                     <span class="ex">MYPAGE</span>
                 </a>
-                <a th:href="@{/cart}" sec:authorize="isAuthenticated()">
+                <a th:href="@{/cart}">
                     <span class="ex">CART</span>
                 </a>
-                <a th:href="@{/addItem}" sec:authorize="isAuthenticated()">
+                <a th:href="@{/addItem}">
                     <span class="ex">ADD ITEM</span>
                 </a>
-                <form th:action="@{/logout}" method="post" class="logout-form" sec:authorize="isAuthenticated()">
+                <form th:action="@{/logout}" method="post" class="logout-form">
                     <input class="ex logout-button" type="submit" value="LOGOUT"/>
                 </form>
             </div>

@@ -1,19 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf"
+      layout:decorate="~{/layout/layout}">
 <head>
     <title>회원가입</title>
+    <link rel="stylesheet" href="/css/joinst.css">
 </head>
-<link rel="stylesheet" href="/css/joinst.css">
 <body>
-<div class="top-section">
-    <a href="/"><span class="ex">HOME</span></a>
-    <span class="ex" th:if="${session.member != null}">
-        <a href="/logout"><span class="ex">LOGOUT</span></a>
-    </span>
-    <a href="/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/cart"><span class="ex">CART</span></a>
-    <a href="/additem"><span class="ex">ADD ITEM</span></a>
-</div>
+<main layout:fragment="content">
 <form method="post" action="/join" id="join-form" th:object="${saveMemberDto}">
     <div class="container">
         <div class="member-container">
@@ -55,10 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="mb-5 container-fluid">
-        <hr>
-        <p> ⓒ 2024 Shopping Mall Example WebSite </p>
-    </div>
 </form>
+</main>
 </body>
 </html>

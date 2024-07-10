@@ -8,6 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title th:text="${title}">Main</title>
     <link rel="stylesheet" href="/css/mainst.css">
+    <style>
+        .card a, .card-body a, .price, .fw-bolder {
+            text-decoration: none !important;
+        }
+    </style>
 </head>
 <body>
 <header th:replace="~{fragments/top-section :: topSection}"></header>

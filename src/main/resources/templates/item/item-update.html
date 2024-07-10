@@ -1,25 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/itemmodifyst.css">
 </head>
 <body>
-<div class="top-section">
-    <a href="/"><span class="ex">HOME</span></a>
-    <span class="ex" th:if="${session.member != null}"></span>
-        <a href="/logout"><span class="ex">LOGOUT</span></a>
-    </span>
-    <a href="/join"><span class="ex">JOIN</span></a>
-    <a href="/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/cart"><span class="ex">CART</span></a>
-    <a href="/additem"><span class="ex">ADD ITEM</span></a>
-</div>
-
+<main layout:fragment="content">
 <div class="container">
     <div class="jumbotron">
-        <form method="post" action="/items/itemmodify" onsubmit="return validateForm()">
+        <form method="post" th:action="@{/items/{itemId}/update(itemId=${item.id})}" onsubmit="return validateForm()">
             <h3 style="text-align: center;" th:text="${item.name}">상품 이름</h3>
             <div class="form-group">
                 <label for="price">Price:</label>
@@ -35,5 +27,6 @@
         </form>
     </div>
 </div>
+</main>>
 </body>
 </html>

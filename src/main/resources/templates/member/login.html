@@ -1,18 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf"
+      layout:decorate="~{/layout/layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/loginst.css">
 </head>
 <body>
-<div class="top-section">
-    <a href="/"><span class="ex">HOME</span></a>
-    <a href="/join"><span class="ex">JOIN</span></a>
-    <a href="/mypage"><span class="ex">MYPAGE</span></a>
-    <a href="/cart"><span class="ex">CART</span></a>
-    <a href="/additem"><span class="ex">ADD ITEM</span></a>
-</div>
+<main layout:fragment="content">
 <div class="login-wrapper">
     <h2>Login</h2>
     <form method="post" action="/login-proc" id="login-form">
@@ -24,5 +20,6 @@
         <p type="hidden" th:if="${loginError}" th:text="${loginError}"></p>
     </div>
 </div>
+</main>
 </body>
 </html>

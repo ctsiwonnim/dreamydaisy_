@@ -47,21 +47,24 @@ public class ItemController {
         return "/item/item";
     }
 
+
     @GetMapping("/items/{itemId}/update")
-    public String itemmodifyForm() {
-        return "itme-update";
+    public String itemupdateForm(@PathVariable Long itemId, Model model) {
+        Item item = itemService.findById(itemId);
+        model.addAttribute("item", item);
+        return "/item/item-update";
     }
 
-    @PostMapping("/items/{itemId}update")
-    public String mypageModify(
-            @RequestParam Long id,
+    @PostMapping("/items/{itemId}/update")
+    public String mypageUpdate(
+            @PathVariable Long itemId,
             @RequestParam int price,
             @RequestParam String itemscript,
             @RequestParam String name,
             HttpSession session) {
 
         Item item = Item.builder()
-                .id(id)
+                .id(itemId)
                 .name(name)
                 .price(price)
                 .itemscript(itemscript)
@@ -70,6 +73,5 @@ public class ItemController {
         itemService.update(item);
         session.setAttribute("item", item);
         return "redirect:/";
-
     }
 }

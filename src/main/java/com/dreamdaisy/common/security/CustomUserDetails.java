@@ -17,6 +17,10 @@ public class CustomUserDetails implements UserDetails {
         this.member = member;
     }
 
+    public Long getMemberId() {
+        return member.getId();
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // 권한을 반환합니다. 여기서는 기본적으로 빈 리스트를 반환합니다.

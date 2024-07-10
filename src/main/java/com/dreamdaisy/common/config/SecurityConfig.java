@@ -1,5 +1,6 @@
 package com.dreamdaisy.common.config;
 
+import com.dreamdaisy.common.security.CustomAuthenticationSuccessHandler;
 import com.dreamdaisy.common.security.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,7 @@ import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
+    private final CustomAuthenticationSuccessHandler successHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
@@ -36,7 +38,7 @@ public class SecurityConfig {
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .failureUrl("/login/error")
-                .defaultSuccessUrl("/", true));
+                .successHandler(successHandler));
 
         http.logout(logout -> logout
                 .logoutSuccessUrl("/")

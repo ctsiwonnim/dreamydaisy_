@@ -35,32 +35,46 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px; /* Adjusted for fixed banner */
+    justify-content: center;
+    margin-top: 120px;
     padding: 30px;
     background-color: white;
     border: 1px solid #cfcfcf;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%; /* Increased width */
-    max-width: 800px; /* Increased max-width */
+    width: 90%;
+    max-width: 1000px;
+    margin: 120px auto 0;
 }
 
-.jumbotron {
+.content-box {
     width: 100%;
+    max-width: 600px;
     padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.item-name {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 .form-group {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 15px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    width: 100%;
 }
 
 .form-group label {
-    flex: 0 0 120px;
-    text-align: right;
-    margin-right: 10px;
+    flex: 0 0 100px;
+    text-align: left;
+    margin-right: 20px;
     font-weight: bold;
 }
 
@@ -71,11 +85,17 @@ body {
     border: 1px solid #cfcfcf;
     border-radius: 5px;
     font-size: 14px;
+    width: calc(150% - 120px); /* Increase width to 1.5 times and stay inside the container */
+}
+
+#itemscript {
+    height: calc(2 * 1.5 * 100% / 1.5); /* Double the height of the description input */
 }
 
 .btn-container {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .btn-primary {
@@ -86,13 +106,14 @@ body {
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
-    width: 100%; /* Full width of the parent container */
-    max-width: 200px; /* Limiting the width of the button */
+    width: 100%;
+    max-width: 200px;
 }
 
 .btn-primary:hover {
     background-color: #e595a5;
 }
+
 input[readonly] {
     background-color: #f0f0f0;
     border: none;

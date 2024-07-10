@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/cartst.css">
 </head>
 <body>
-<main layout:decorate="content" th:object="${cart.getItems()}">
+<main layout:fragment="content" th:object="${cart.items}">
     <section class="cart">
         <div class="cart__information">
             <ul>
@@ -27,23 +27,26 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="cartItem : ${cart.getItems()}" class="cart__list__detail">
-                <td><a href="#">공식 스토어</a>
-                    <p>커스텀 하트 키링</p>
-                    <span class="price">15,000원</span>
+            <tr th:each="cartItem : ${cart.items}" class="cart__list__detail">
+                <td>
+                    <a href="#">공식 스토어</a>
+                    <p th:text="${cartItem.itemName}">커스텀 하트 키링</p>
+                    <span class="price" th:text="${#numbers.formatDecimal(cartItem.price, 1, 'COMMA', 2, 'POINT')}">15,000원</span>
                 </td>
                 <td class="cart__list__option">
-                    <p>모델명 : 커스텀 하트 쉐이커 키링 / 1개</p>
+                    <p th:text="'모델명 : ' + ${cartItem.modelName} + ' / ' + ${cartItem.quantity} + '개'">모델명 : 커스텀 하트 쉐이커 키링 / 1개</p>
                 </td>
-                <td><span class="price">15,000원</span><br>
+                <td>
+                    <span class="price" th:text="${#numbers.formatDecimal(cartItem.price, 1, 'COMMA', 2, 'POINT')}">15,000원</span><br>
+                </td>
             </tr>
             </tbody>
         </table>
-    <div class="cart__mainbtns">
-        <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
-        <button class="cart__bigorderbtn right">주문하기</button>
-    </div>
-</section>
+        <div class="cart__mainbtns">
+            <button class="cart__bigorderbtn left">쇼핑 계속하기</button>
+            <button class="cart__bigorderbtn right">주문하기</button>
+        </div>
+    </section>
 </main>
 </body>
 </html>

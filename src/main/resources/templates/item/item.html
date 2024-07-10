@@ -20,7 +20,7 @@
             <label for="itemscript">Description:</label>
             <div class="text-value" id="itemscript" th:text="${item.itemscript}">설명</div>
         </div>
-        <form method="get" action="/items/item-modify">
+        <form method="get" th:action="@{/items/{itemId}/update(itemId=${item.id})}">
             <div class="btn-container">
                 <button type="submit" class="btn btn-primary form-control">수정하기</button>
             </div>

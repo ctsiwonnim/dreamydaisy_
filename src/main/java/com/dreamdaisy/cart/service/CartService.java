@@ -26,4 +26,12 @@ public class CartService {
 
         return cart;
     }
+
+    @Transactional
+    public void updateCartItem(Long cartItemId, int quantity) {
+        CartItem cartItem = new CartItem();
+        cartItem.setId(cartItemId);
+        cartItem.setQuantity(quantity);
+        cartMapper.updateCartItem(cartItem);
+    }
 }

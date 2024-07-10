@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 * {
     box-sizing: border-box;
     font-style: normal;
@@ -41,13 +43,24 @@ body {
     border: 1px solid #cfcfcf;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%; /* Increased to accommodate wider content */
-    max-width: 1000px; /* Increased to accommodate wider content */
+    width: 90%;
+    max-width: 1000px;
 }
 
-.jumbotron {
+.content-box {
     width: 100%;
+    max-width: 600px; /* 고정된 너비 설정 */
     padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.item-name {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
 
 .form-group {
@@ -66,14 +79,14 @@ body {
 }
 
 .form-group .text-value {
-    flex: 4; /* Changed from 1 to 2 to double the width */
+    flex: 1;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #cfcfcf;
     border-radius: 5px;
     font-size: 14px;
     background-color: #f8f8f8;
-    width: calc(200% - 120px); /* Doubled the percentage */
+    width: 100%; /* 너비를 100%로 설정하여 부모 컨테이너의 너비를 따르도록 함 */
 }
 
 #itemscript {
